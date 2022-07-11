@@ -1,6 +1,6 @@
+import * as dotenv from 'dotenv';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { Account } from '../../entities/account/account.entity';
-import * as dotenv from 'dotenv';
 dotenv.config();
 
 const DATABASE = {

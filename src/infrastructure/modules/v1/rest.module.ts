@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { AccountMapper } from '../../../domain/mappers/account/account.mapper';
+import { AccountsMapper } from '../../../domain/mappers/account/accounts.mapper';
 import { AccountController } from '../../controllers/account/account.controller';
 import { Account } from '../../entities/account/account.entity';
 import { AccountRepository } from '../../repositories/account/account.repository';
@@ -17,6 +17,6 @@ import { connectionDatabase } from '../../config/database/database';
     TypeOrmModule.forRoot(connectionDatabase),
   ],
   controllers: [AccountController],
-  providers: [AccountService, AccountRepository, AccountMapper, Repository],
+  providers: [AccountService, AccountRepository, AccountsMapper, Repository],
 })
 export class RestModule {}

@@ -1,7 +1,7 @@
 import { Account } from '../../../infrastructure/entities/account/account.entity';
 import { AccountResponse } from '../../responses/account/account.response';
 
-export class AccountMapper {
+export class AccountsMapper {
   mapAccountToResponse(account: Account): AccountResponse {
     return {
       id: account.id,
