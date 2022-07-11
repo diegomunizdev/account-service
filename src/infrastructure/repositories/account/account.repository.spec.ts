@@ -23,25 +23,27 @@ describe('AccountRepository', () => {
 
   it('should return a account', async () => {
     jest
-      .spyOn(accountRepository, 'getById')
+      .spyOn(accountRepository, 'findOne')
       .mockReturnValueOnce(Promise.resolve(mockAccount));
 
     const result = await accountRepository.getById(1);
 
-    expect(accountRepository.getById).toHaveBeenCalledTimes(1);
-    expect(accountRepository.getById).toHaveBeenCalledWith(1);
+    expect(accountRepository.findOne).toHaveBeenCalledTimes(1);
+    expect(accountRepository.findOne).toHaveBeenCalledWith({
+      where: { id: 1 },
+    });
     expect(result).toEqual(mockAccount);
   });
 
   it('should return an array of accounts', async () => {
     jest
-      .spyOn(accountRepository, 'getAll')
+      .spyOn(accountRepository, 'find')
       .mockReturnValueOnce(Promise.resolve(mockAccountsRepository));
 
     const result = await accountRepository.getAll();
 
-    expect(accountRepository.getAll).toHaveBeenCalledTimes(1);
-    expect(accountRepository.getAll).toHaveBeenCalledWith();
+    expect(accountRepository.find).toHaveBeenCalledTimes(1);
+    expect(accountRepository.find).toHaveBeenCalledWith();
     expect(result).toEqual(mockAccountsRepository);
   });
 });
