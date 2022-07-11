@@ -3,7 +3,7 @@ name: Test account service
 on:
   pull:
     branches: [ main, develop ]
-  pull_requests:
+  pull_request:
     branches: [ main, develop ]
 
 jobs:
