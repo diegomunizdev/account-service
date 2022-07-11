@@ -8,6 +8,7 @@ on:
 
 jobs:
   tests:
+    if: ${{ github.event.comment.body == 'Approved' }}
     runs-on: ubuntu-latest
 
     strategy:
@@ -22,4 +23,3 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: yarn --frozen-lockfile
       - run: yarn test
-        if: github.event.comment.body == 'Approved'
