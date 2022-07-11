@@ -22,7 +22,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: yarn --frozen-lockfile
       - run: yarn test
-        if: ${{ github.event.comment.body == 'Approved' }}
 
   deploy-dev:
     runs-on: ubuntu-latest
