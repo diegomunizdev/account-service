@@ -22,7 +22,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: yarn --frozen-lockfile
       - run: yarn test
-        if: ${{ github.event.comment.body == 'Approved' }}
 
   deploy-dev:
     runs-on: ubuntu-latest
@@ -31,4 +30,13 @@ jobs:
     needs: tests
     steps:
       - name: Deploy dev
-        run: echo "Deploy dev"
+      - run: echo "Deploy dev"
+
+  deploy-prd:
+    runs-on: ubuntu-latest
+    environment:
+      name: prd
+    needs: deploy-dev
+    steps:
+      - name: Deploy prd
+      - run: echo "Deploy prd"
