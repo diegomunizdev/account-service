@@ -9,7 +9,6 @@ export class AccountController {
 
   @Get('/:id')
   async getById(@Param('id') id: number): Promise<AccountResponse> {
-    console.log('params', id);
     return await this._accountService.getById(id);
   }
 

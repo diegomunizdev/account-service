@@ -30,7 +30,6 @@ describe('Account (e2e)', () => {
       .get('/account')
       .expect(200)
       .then(({ body }) => {
-        console.log(body);
         expect(body).toBeDefined();
       });
   });
