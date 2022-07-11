@@ -1,7 +1,7 @@
 name: Test account service
 
 on:
-  pull:
+  push:
     branches: [ main, develop ]
   pull_request:
     branches: [ main, develop ]
