@@ -29,5 +29,14 @@ jobs:
       name: dev
     needs: tests
     steps:
-      - name: Deploy dev
+      - name: Deploy development
         run: echo "Deploy dev"
+
+  deploy-prd:
+    runs-on: ubuntu-latest
+    environment:
+      name: prd
+    needs: deploy-dev
+    steps:
+      - name: Deploy production
+        run: echo "Deploy prd"
