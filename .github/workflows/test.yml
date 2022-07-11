@@ -2,9 +2,9 @@ name: Test account service
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
 
 jobs:
   tests:
@@ -15,5 +15,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install dependencies
-        run: npm ci
+        run: npm run test
+
+      - name: Run the tests
         run: npm run test
