@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
 import { AccountResponse } from '../../../domain/responses/account/account.response';
 import { AccountService } from '../../../usecases/services/account/account.service';
@@ -6,6 +6,12 @@ import { AccountService } from '../../../usecases/services/account/account.servi
 @Controller('account')
 export class AccountController {
   constructor(private readonly _accountService: AccountService) {}
+
+  @Get('/:id')
+  async getById(@Param('id') id: number): Promise<AccountResponse> {
+    console.log('params', id);
+    return await this._accountService.getById(id);
+  }
 
   @Get()
   async getAll(): Promise<AccountResponse[]> {

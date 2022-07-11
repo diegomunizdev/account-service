@@ -11,7 +11,11 @@ export class AccountRepository {
     private readonly _accountRepository: Repository<Account>,
   ) {}
 
+  async getById(id: number): Promise<Account> {
+    return await this._accountRepository.findOne({ where: { id } });
+  }
+
   async getAll(): Promise<Account[]> {
-    return this._accountRepository.find();
+    return await this._accountRepository.find();
   }
 }

@@ -1,6 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { mockAccounts } from '../../../domain/mocks/account/account.mock';
+import {
+  mockAccount,
+  mockAccounts,
+} from '../../../domain/mocks/account/account.mock';
 import { AccountService } from '../../../usecases/services/account/account.service';
 import { AccountController } from './account.controller';
 
@@ -16,6 +19,7 @@ describe('AccountController', () => {
           provide: AccountService,
           useFactory: () => ({
             getAll: jest.fn(() => mockAccounts),
+            getById: jest.fn(() => mockAccount),
           }),
         },
       ],
@@ -23,6 +27,18 @@ describe('AccountController', () => {
 
     accountController = module.get<AccountController>(AccountController);
     accountService = module.get<AccountService>(AccountService);
+  });
+
+  it('should return a account', async () => {
+    jest
+      .spyOn(accountService, 'getById')
+      .mockReturnValueOnce(Promise.resolve(mockAccount));
+
+    const response = await accountController.getById(1);
+
+    expect(accountService.getById).toHaveBeenCalledTimes(1);
+    expect(accountService.getById).toHaveBeenCalledWith(1);
+    expect(response).toEqual(mockAccount);
   });
 
   it('should return list of accounts', async () => {
