@@ -30,7 +30,7 @@ jobs:
     needs: tests
     steps:
       - name: Deploy dev
-        run: echo "Deploy dev"
+      - run: echo "Deploy dev"
 
   deploy-prd:
     runs-on: ubuntu-latest
@@ -39,4 +39,4 @@ jobs:
     needs: deploy-dev
     steps:
       - name: Deploy prd
-        run: echo "Deploy prd"
+      - run: echo "Deploy prd"
