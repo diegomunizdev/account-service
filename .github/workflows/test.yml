@@ -31,3 +31,12 @@ jobs:
     steps:
       - name: Deploy dev
         run: echo "Deploy dev"
+
+  deploy-prd:
+    runs-on: ubuntu-latest
+    environment:
+      name: prd
+    needs: deploy-dev
+    steps:
+      - name: Deploy prd
+        run: echo "Deploy prd"
